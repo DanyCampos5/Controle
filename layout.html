@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="pt-BR" class="h-full">
-
-<head>
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestão de Feira</title>
@@ -11,314 +10,154 @@
   <script src="/_sdk/data_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; font-family: 'DM Sans', sans-serif; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    .tab-active { color: #d4a017; border-bottom: 2px solid #d4a017; }
+    .tab-inactive { color: #777; border-bottom: 2px solid transparent; }
+    .tab-inactive:hover { color: #aaa; }
+    .fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    input, select, textarea {
+      background: #1e1e1e; border: 1px solid #333; color: #e5e5e5;
+      border-radius: 10px; padding: 10px 14px; font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s; width: 100%;
     }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #1a1a1a;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 3px;
-    }
-
-    .tab-active {
-      color: #d4a017;
-      border-bottom: 2px solid #d4a017;
-    }
-
-    .tab-inactive {
-      color: #777;
-      border-bottom: 2px solid transparent;
-    }
-
-    .tab-inactive:hover {
-      color: #aaa;
-    }
-
-    .fade-in {
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    input,
-    select,
-    textarea {
-      background: #1e1e1e;
-      border: 1px solid #333;
-      color: #e5e5e5;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-family: 'DM Sans', sans-serif;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #d4a017;
-    }
-
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #d4a017; }
     .btn-primary {
-      background: #d4a017;
-      color: #111;
-      font-weight: 600;
-      border-radius: 10px;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
+      background: #d4a017; color: #111; font-weight: 600; border-radius: 10px;
+      padding: 10px 20px; border: none; cursor: pointer; transition: background 0.2s;
     }
-
-    .btn-primary:hover {
-      background: #c4920f;
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
+    .btn-primary:hover { background: #c4920f; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-qty {
-      background: transparent;
-      color: #d4a017;
-      border: 1px solid #d4a017;
-      border-radius: 6px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.2s;
+      background: transparent; color: #d4a017; border: 1px solid #d4a017; border-radius: 6px;
+      padding: 6px 12px; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s;
     }
-
-    .btn-qty:hover {
-      background: #d4a017;
-      color: #111;
-    }
-
+    .btn-qty:hover { background: #d4a017; color: #111; }
     .btn-danger {
-      background: transparent;
-      color: #e55;
-      border: 1px solid #e55;
-      border-radius: 10px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 13px;
-      transition: all 0.2s;
+      background: transparent; color: #e55; border: 1px solid #e55; border-radius: 10px;
+      padding: 6px 12px; cursor: pointer; font-size: 13px; transition: all 0.2s;
     }
-
-    .btn-danger:hover {
-      background: #e55;
-      color: #111;
-    }
-
+    .btn-danger:hover { background: #e55; color: #111; }
     .card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 14px;
-      padding: 16px;
+      background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 14px; padding: 16px;
       transition: border-color 0.2s;
     }
-
-    .card:hover {
-      border-color: #3a3a3a;
-    }
-
+    .card:hover { border-color: #3a3a3a; }
     .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #1e1e1e;
-      border: 1px solid #d4a017;
-      color: #d4a017;
-      padding: 12px 20px;
-      border-radius: 10px;
-      z-index: 100;
-      animation: fadeIn 0.3s ease;
-      font-size: 14px;
+      position: fixed; bottom: 24px; right: 24px; background: #1e1e1e; border: 1px solid #d4a017;
+      color: #d4a017; padding: 12px 20px; border-radius: 10px; z-index: 100;
+      animation: fadeIn 0.3s ease; font-size: 14px;
     }
-
     .confirm-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 90;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 90;
+      display: flex; align-items: center; justify-content: center;
     }
-
     .confirm-box {
-      background: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 14px;
-      padding: 24px;
-      max-width: 340px;
-      text-align: center;
+      background: #1e1e1e; border: 1px solid #333; border-radius: 14px;
+      padding: 24px; max-width: 340px; text-align: center;
     }
   </style>
-  <style>
-    body {
-      box-sizing: border-box;
-    }
-  </style>
-</head>
-
-<body class="h-full" style="background:#111; color:#e5e5e5;">
-  <div id="app" class="h-full w-full flex flex-col overflow-auto">
-    <!-- Header -->
-    <header class="w-full px-6 pt-5 pb-2 flex items-center justify-between flex-shrink-0">
-      <h1 id="app-title" class="text-xl font-bold" style="color:#d4a017;">Gestão de Feira</h1><span class="text-xs"
-        style="color:#555;">v1.0</span>
-    </header><!-- Nav Tabs -->
-    <nav class="w-full flex border-b flex-shrink-0 px-4 gap-1 overflow-x-auto" style="border-color:#222;">
-      <button onclick="switchTab('entrada')" href="#tab-entrada"
-        class="tab-active flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i
-          data-lucide="log-in" style="width:16px;height:16px;"></i> 1. Entrada </button> <button
-        onclick="switchTab('estoque')" href="#tab-estoque"
-        class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i
-          data-lucide="package" style="width:16px;height:16px;"></i> 2. Estoque </button> <button
-        onclick="switchTab('bebidas')" href="#tab-bebidas"
-        class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i
-          data-lucide="wine" style="width:16px;height:16px;"></i> 3. Bebidas </button> <button
-        onclick="switchTab('saida')" href="#tab-saida"
-        class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i
-          data-lucide="log-out" style="width:16px;height:16px;"></i> 4. Saída </button>
-    </nav><!-- Content -->
-    <main class="flex-1 w-full overflow-auto">
-      <!-- Entrada -->
-      <section id="sec-entrada" class="fade-in">
-        <div class="flex flex-col items-center justify-center min-h-full py-12 px-4">
-          <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">CONFIGURAÇÃO INICIAL</h1>
-          <p class="text-sm mb-8" style="color:#777;">Preencha os dados de entrada para hoje</p>
-          <form id="form-entrada" class="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div class="flex flex-col gap-3"><label class="text-sm font-medium" style="color:#d4a017;"
-                for="ent-date">Data:</label> <input id="ent-date" type="date" required style="font-size:16px;"> <span
-                class="text-xs" style="color:#555;">Selecione a data de hoje</span>
-            </div>
-            <div class="flex flex-col gap-3"><label class="text-sm font-medium" style="color:#d4a017;"
-                for="ent-caixa">Caixa Inicial:</label> <input id="ent-caixa" type="number" step="0.01"
-                placeholder="R$ 0,00" required> <span class="text-xs" style="color:#555;">Valor em reais</span>
-            </div>
-            <div class="flex flex-col gap-3"><label class="text-sm font-medium" style="color:#d4a017;"
-                for="ent-pasteis">Total de Pastéis:</label> <input id="ent-pasteis" type="number" placeholder="0"
-                min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
-            </div>
-            <div class="flex flex-col gap-3"><label class="text-sm font-medium" style="color:#d4a017;"
-                for="ent-bebidas">Total de Bebidas:</label> <input id="ent-bebidas" type="number" placeholder="0"
-                min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
-            </div>
-            <div class="sm:col-span-2 flex justify-center mt-6"><button href="#tab-estoque" type="submit"
-                class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold" id="btn-ent-submit"> <i
-                  data-lucide="check" style="width:20px;height:20px;"></i> Confirmar Entrada </button>
-            </div>
-          </form>
-        </div>
-      </section><!-- Estoque -->
-      <section id="sec-estoque" class="fade-in hidden">
-        <div class="flex flex-col items-center justify-start min-h-full py-8 px-4">
-          <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">GESTÃO DE ESTOQUE DE PASTÉIS</h1>
-          <p class="text-sm mb-8" style="color:#777;">Atualize as quantidades de cada sabor</p>
-          <div class="w-full max-w-2xl">
-            <div id="estoque-list" class="flex flex-col gap-4 mb-8"></div>
-          </div><button onclick="saveEstoque()"
-            class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold"> <i data-lucide="save"
-              style="width:20px;height:20px;"></i> Salvar Estoque </button>
-        </div>
-      </section><!-- Bebidas -->
-      <section id="sec-bebidas" class="fade-in hidden">
-        <div class="flex flex-col items-center justify-start min-h-full py-8 px-4">
-          <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">GESTÃO DE ESTOQUE DE BEBIDAS</h1>
-          <p class="text-sm mb-8" style="color:#777;">Atualize as quantidades de cada bebida</p>
-          <div class="w-full max-w-2xl">
-            <div id="bebidas-list" class="flex flex-col gap-4 mb-8"></div>
-          </div><button onclick="saveBebidas()"
-            class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold"> <i data-lucide="save"
-              style="width:20px;height:20px;"></i> Salvar Bebidas </button>
-        </div>
-      </section><!-- Saída -->
-      <section id="sec-saida" class="fade-in hidden">
-        <div class="w-full mx-auto px-4 py-6 pb-24">
-          <div class="max-w-2xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-1" style="color:#d4a017;">RESUMO DE FECHAMENTO</h1>
-            <p class="text-xs sm:text-sm mb-6" style="color:#777;">Finalize o dia com os totais de vendas</p>
-            <form id="form-saida" class="space-y-4"><!-- SEÇÃO 1: TOTAL DE VENDAS -->
-              <div class="card">
-                <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">📦 TOTAL DE VENDAS</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number"
-                      placeholder="0" min="0" value="0" required>
-                  </div>
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-bebidas-total">Bebidas Vendidas</label> <input id="sai-bebidas-total" type="number"
-                      placeholder="0" min="0" value="0" required>
-                  </div>
-                </div>
-              </div><!-- SEÇÃO 2: MÉTODOS DE PAGAMENTO -->
-              <div class="card">
-                <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">💳 MÉTODOS DE PAGAMENTO</h2>
-                <div class="grid grid-cols-2 gap-2">
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01"
-                      placeholder="0.00" min="0" value="0">
-                  </div>
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01"
-                      placeholder="0.00" min="0" value="0">
-                  </div>
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0"
-                      value="0">
-                  </div>
-                  <div class="flex flex-col gap-1"><label class="text-xs font-medium" style="color:#d4a017;"
-                      for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01"
-                      placeholder="0.00" min="0" value="0">
-                  </div>
-                </div>
-              </div><!-- SEÇÃO 3: VALOR TOTAL DO DIA -->
-              <div
-                style="background:#0a0a0a; border: 3px solid #d4a017; border-radius:12px; padding:16px; text-align:center;">
-                <p class="text-xs font-medium mb-2" style="color:#888;">VALOR TOTAL</p>
-                <div class="text-3xl sm:text-4xl font-bold" id="sai-total-display" style="color:#d4a017;">
-                  R$ 0,00
-                </div>
-              </div><!-- BOTÃO FINAL --> <button type="submit"
-                class="btn-primary flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold w-full"
-                id="btn-sai-submit"> <i data-lucide="lock" style="width:18px; height:18px;"></i> <span>Finalizar
-                  Dia</span> </button>
-            </form>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full" style="background:#111; color:#e5e5e5;">
+  <div id="app" class="h-full w-full flex flex-col overflow-auto"><!-- Header -->
+   <header class="w-full px-6 pt-5 pb-2 flex items-center justify-between flex-shrink-0">
+    <h1 id="app-title" class="text-xl font-bold" style="color:#d4a017;">Gestão de Feira</h1><span class="text-xs" style="color:#555;">v1.0</span>
+   </header><!-- Nav Tabs -->
+   <nav class="w-full flex border-b flex-shrink-0 px-4 gap-1 overflow-x-auto" style="border-color:#222;"><button onclick="switchTab('entrada')" id="tab-entrada" class="tab-active flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-in" style="width:16px;height:16px;"></i> 1. Entrada </button> <button onclick="switchTab('estoque')" id="tab-estoque" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="package" style="width:16px;height:16px;"></i> 2. Estoque </button> <button onclick="switchTab('bebidas')" id="tab-bebidas" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="wine" style="width:16px;height:16px;"></i> 3. Bebidas </button> <button onclick="switchTab('saida')" id="tab-saida" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-out" style="width:16px;height:16px;"></i> 4. Saída </button>
+   </nav><!-- Content -->
+   <main class="flex-1 w-full overflow-auto"><!-- Entrada -->
+    <section id="sec-entrada" class="fade-in">
+     <div class="flex flex-col items-center justify-center min-h-full py-12 px-4">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">CONFIGURAÇÃO INICIAL</h1>
+      <p class="text-sm mb-8" style="color:#777;">Preencha os dados de entrada para hoje</p>
+      <form id="form-entrada" class="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-8">
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-date">Data:</label> <input id="ent-date" type="date" required style="font-size:16px;"> <span class="text-xs" style="color:#555;">Selecione a data de hoje</span>
+       </div>
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-caixa">Caixa Inicial:</label> <input id="ent-caixa" type="number" step="0.01" placeholder="R$ 0,00" required> <span class="text-xs" style="color:#555;">Valor em reais</span>
+       </div>
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis">Total de Pastéis:</label> <input id="ent-pasteis" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+       </div>
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas:</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+       </div>
+       <div class="sm:col-span-2 flex justify-center mt-6">
+        <button type="button" class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold" onclick="nextTab()"> <i data-lucide="check" style="width:20px;height:20px;"></i> Confirmar Entrada </button>
+       </div>
+      </form>
+     </div>
+    </section><!-- Estoque -->
+    <section id="sec-estoque" class="fade-in hidden">
+     <div class="flex flex-col items-center justify-start min-h-full py-8 px-4">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">GESTÃO DE ESTOQUE DE PASTÉIS</h1>
+      <p class="text-sm mb-8" style="color:#777;">Atualize as quantidades de cada sabor</p>
+      <div class="w-full max-w-2xl">
+       <div id="estoque-list" class="flex flex-col gap-4 mb-8"></div>
+      </div><button onclick="saveEstoque(); nextTab();" class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold"> <i data-lucide="save" style="width:20px;height:20px;"></i> Salvar Estoque </button>
+     </div>
+    </section><!-- Bebidas -->
+    <section id="sec-bebidas" class="fade-in hidden">
+     <div class="flex flex-col items-center justify-start min-h-full py-8 px-4">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-2" style="color:#d4a017;">GESTÃO DE ESTOQUE DE BEBIDAS</h1>
+      <p class="text-sm mb-8" style="color:#777;">Atualize as quantidades de cada bebida</p>
+      <div class="w-full max-w-2xl">
+       <div id="bebidas-list" class="flex flex-col gap-4 mb-8"></div>
+      </div><button onclick="saveBebidas(); nextTab();" class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold"> <i data-lucide="save" style="width:20px;height:20px;"></i> Salvar Bebidas </button>
+     </div>
+    </section><!-- Saída -->
+    <section id="sec-saida" class="fade-in hidden">
+     <div class="w-full mx-auto px-4 py-6 pb-24">
+      <div class="max-w-2xl mx-auto">
+       <h1 class="text-2xl sm:text-3xl font-bold mb-1" style="color:#d4a017;">RESUMO DE FECHAMENTO</h1>
+       <p class="text-xs sm:text-sm mb-6" style="color:#777;">Finalize o dia com os totais de vendas</p>
+       <form id="form-saida" class="space-y-4">
+        <!-- SEÇÃO 1: TOTAL DE VENDAS -->
+        <div class="card">
+         <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">📦 TOTAL DE VENDAS</h2>
+         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
           </div>
-        </div>
-      </section>
-    </main>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
+          </div>
+         </div>
+        </div><!-- SEÇÃO 2: MÉTODOS DE PAGAMENTO -->
+        <div class="card">
+         <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">💳 MÉTODOS DE PAGAMENTO</h2>
+         <div class="grid grid-cols-2 gap-2">
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01" placeholder="0.00" min="0">
+          </div>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01" placeholder="0.00" min="0">
+          </div>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0">
+          </div>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01" placeholder="0.00" min="0">
+          </div>
+         </div>
+        </div><!-- SEÇÃO 3: VALOR TOTAL DO DIA -->
+        <div style="background:#0a0a0a; border: 3px solid #d4a017; border-radius:12px; padding:16px; text-align:center;">
+         <p class="text-xs font-medium mb-2" style="color:#888;">VALOR TOTAL</p>
+         <div class="text-3xl sm:text-4xl font-bold" id="sai-total-display" style="color:#d4a017;">
+          R$ 0,00
+         </div>
+        </div><!-- BOTÃO FINAL --> <button type="submit" class="btn-primary flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold w-full" id="btn-sai-submit"> <i data-lucide="lock" style="width:18px; height:18px;"></i> <span>Finalizar Dia</span> </button>
+       </form>
+      </div>
+     </div>
+    </section>
+   </main>
   </div><!-- Toast container -->
   <div id="toast-container"></div><!-- Confirm overlay -->
   <div id="confirm-container"></div>
@@ -345,13 +184,22 @@
     // Tab switching
     function switchTab(tab) {
       currentTab = tab;
-      ['entrada', 'estoque', 'bebidas', 'saida'].forEach(t => {
+      ['entrada','estoque','bebidas','saida'].forEach(t => {
         document.getElementById('sec-' + t).classList.toggle('hidden', t !== tab);
         const btn = document.getElementById('tab-' + t);
         btn.className = btn.className.replace(/tab-\w+/, t === tab ? 'tab-active' : 'tab-inactive');
       });
       if (tab === 'estoque') renderEstoque();
       if (tab === 'bebidas') renderBebidas();
+    }
+
+    // Advance to next tab
+    function nextTab() {
+      const tabs = ['entrada', 'estoque', 'bebidas', 'saida'];
+      const currentIndex = tabs.indexOf(currentTab);
+      if (currentIndex < tabs.length - 1) {
+        switchTab(tabs[currentIndex + 1]);
+      }
     }
 
     // Toast
@@ -498,36 +346,41 @@
 
     // Calcular total do dia
     function calcularTotal() {
-      const debito = Number(document.getElementById('sai-debito').value) || 0;
-      const credito = Number(document.getElementById('sai-credito').value) || 0;
-      const pix = Number(document.getElementById('sai-pix').value) || 0;
-      const dinheiro = Number(document.getElementById('sai-dinheiro').value) || 0;
-      const total = debito + credito + pix + dinheiro;
-      const display = document.getElementById('sai-total-display');
-      if (display) {
-        display.textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      }
+      setTimeout(() => {
+        const debito = parseFloat(document.getElementById('sai-debito').value) || 0;
+        const credito = parseFloat(document.getElementById('sai-credito').value) || 0;
+        const pix = parseFloat(document.getElementById('sai-pix').value) || 0;
+        const dinheiro = parseFloat(document.getElementById('sai-dinheiro').value) || 0;
+        const total = debito + credito + pix + dinheiro;
+        const display = document.getElementById('sai-total-display');
+        if (display) {
+          display.textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+      }, 0);
     }
 
     // Form handlers
     function setupForm(section, prefix) {
       const form = document.getElementById('form-' + section);
       if (!form) return;
-
+      
       if (section === 'saida') {
-        // Listeners para cálculo de total
-        ['sai-debito', 'sai-credito', 'sai-pix', 'sai-dinheiro'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) {
-            el.addEventListener('input', calcularTotal);
-            el.addEventListener('change', calcularTotal);
-          }
-        });
+        // Listeners para cálculo de total - adiciona ao carregar
+        setTimeout(() => {
+          ['sai-debito', 'sai-credito', 'sai-pix', 'sai-dinheiro'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.addEventListener('input', calcularTotal, true);
+              el.addEventListener('keyup', calcularTotal, true);
+              el.addEventListener('change', calcularTotal, true);
+            }
+          });
+        }, 100);
 
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (allData.length >= 999) { showToast('Limite de 999 registros atingido!'); return; }
-
+          
           const btn = form.querySelector('button[type="submit"]');
           btn.disabled = true;
           btn.innerHTML = '<i data-lucide="loader" style="width:18px; height:18px;"></i> Salvando...';
@@ -555,7 +408,7 @@
           btn.disabled = false;
           btn.innerHTML = '<i data-lucide="lock" style="width:18px; height:18px;"></i> Finalizar Dia';
           lucide.createIcons();
-
+          
           if (r.isOk) {
             e.target.reset();
             calcularTotal();
@@ -568,7 +421,7 @@
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
           if (allData.length >= 999) { showToast('Limite de 999 registros atingido!'); return; }
-
+          
           const btn = form.querySelector('button[type="submit"]');
           btn.disabled = true;
           btn.textContent = 'Salvando...';
@@ -587,7 +440,7 @@
           btn.disabled = false;
           btn.innerHTML = '<i data-lucide="check" style="width:20px;height:20px;"></i> Confirmar Entrada';
           lucide.createIcons();
-
+          
           if (r.isOk) {
             e.target.reset();
             if (section === 'entrada') {
@@ -643,7 +496,5 @@
       lucide.createIcons();
     })();
   </script>
-  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9e63b230e2b7e142',t:'MTc3NTE3MzQwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
-</body>
-
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e6a2c5a975fe142',t:'MTc3NTI0MTMyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
