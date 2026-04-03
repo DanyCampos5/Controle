@@ -68,7 +68,7 @@
    <header class="w-full px-6 pt-5 pb-2 flex items-center justify-between flex-shrink-0">
     <h1 id="app-title" class="text-xl font-bold" style="color:#d4a017;">Gestão de Feira</h1><span class="text-xs" style="color:#555;">v1.0</span>
    </header><!-- Nav Tabs -->
-   <nav class="w-full flex border-b flex-shrink-0 px-4 gap-1 overflow-x-auto" style="border-color:#222;"><button onclick="switchTab('entrada')" id="tab-entrada" class="tab-active flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-in" style="width:16px;height:16px;"></i> 1. Entrada </button> <button onclick="switchTab('estoque')" id="tab-estoque" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="package" style="width:16px;height:16px;"></i> 2. Estoque </button> <button onclick="switchTab('bebidas')" id="tab-bebidas" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="wine" style="width:16px;height:16px;"></i> 3. Bebidas </button> <button onclick="switchTab('saida')" id="tab-saida" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-out" style="width:16px;height:16px;"></i> 4. Saída </button>
+   <nav class="w-full flex border-b flex-shrink-0 px-4 gap-1 overflow-x-auto" style="border-color:#222;"><button onclick="switchTab('entrada')" id="tab-entrada" class="tab-active flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-in" style="width:16px;height:16px;"></i> 1. Entrada </button> <button onclick="switchTab('estoque')" id="tab-estoque" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="package" style="width:16px;height:16px;"></i> 2. Pastéis </button> <button onclick="switchTab('bebidas')" id="tab-bebidas" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="wine" style="width:16px;height:16px;"></i> 3. Bebidas </button> <button onclick="switchTab('saida')" id="tab-saida" class="tab-inactive flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all whitespace-nowrap"> <i data-lucide="log-out" style="width:16px;height:16px;"></i> 4. Saída </button>
    </nav><!-- Content -->
    <main class="flex-1 w-full overflow-auto"><!-- Entrada -->
     <section id="sec-entrada" class="fade-in">
@@ -85,9 +85,16 @@
        <div class="flex flex-col gap-3">
         <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis">Total de Pastéis:</label> <input id="ent-pasteis" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
-       <div class="flex flex-col gap-3">
-        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas:</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+        <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis">Total de Pastéis Especiais:</label> <input id="ent-pasteis" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas (R$4,00):</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+       </div>
+       <div class="flex flex-col gap-3">
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas (R$7,00):</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+       </div>
+
        <div class="sm:col-span-2 flex justify-center mt-6">
         <button type="button" class="btn-primary flex items-center gap-3 px-12 py-3 text-base font-semibold" onclick="nextTab()"> <i data-lucide="check" style="width:20px;height:20px;"></i> Confirmar Entrada </button>
        </div>
@@ -126,7 +133,13 @@
            <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Especiais Vendidos </label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
+          </div>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas (R$4,00) Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
+          </div>
+          <div class="flex flex-col gap-1">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas (R$7,00) Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
           </div>
          </div>
         </div><!-- SEÇÃO 2: MÉTODOS DE PAGAMENTO -->
@@ -167,8 +180,8 @@
     let currentTab = 'entrada';
     let estoqueQuantities = {};
     let bebidasQuantities = {};
-    const flavors = ['Carne', 'Queijo', 'Frango e Queijo', 'Palmito'];
-    const bebidas = ['Água com Gás', 'Coca-Cola', 'Guaraná', 'Suco Natural'];
+    const flavors = ['Carne', 'Queijo', 'Palmito', 'Presunto e Queijo', 'Frango e Queijo', 'Carne e Queijo', 'Palmito Queijo', 'Palmito Frango', 'Pastelão', 'Pastelão Frango', 'Coxinha Frango', 'Coxinha Carne'];
+    const bebidas = ['Água com Gás', 'Água sem Gás', 'Coca-Cola', 'Fanta', 'Sprite', 'Coca-Cola Zero', 'Guaraná', 'Chocomilk', 'Pingado'];
 
     const defaultConfig = {
       app_title: 'Gestão de Feira',
@@ -241,7 +254,7 @@
           <span class="font-semibold text-lg flex-1" style="color:#d4a017;">${flavor}</span>
           <div class="flex items-center gap-2">
             <button type="button" class="btn-qty" onclick="updateQty('${flavor}', -1)">−</button>
-            <input type="number" value="${qty}" min="0" readonly style="width:60px; text-align:center; border: 1px solid #d4a017; background:#0a0a0a; color:#d4a017; font-weight:600;">
+            <input type="number" style="width:60px; text-align:center; border: 1px solid #d4a017; background:#0a0a0a; color:#d4a017; font-weight:600;">
             <button type="button" class="btn-qty" onclick="updateQty('${flavor}', 1)">+</button>
           </div>
         `;
@@ -262,11 +275,12 @@
         const card = document.createElement('div');
         card.className = 'card flex items-center justify-between gap-4';
         const qty = bebidasQuantities[bebida] || 0;
+
         card.innerHTML = `
           <span class="font-semibold text-lg flex-1" style="color:#d4a017;">${bebida}</span>
           <div class="flex items-center gap-2">
             <button type="button" class="btn-qty" onclick="updateBebidaQty('${bebida}', -1)">−</button>
-            <input type="number" value="${qty}" min="0" readonly style="width:60px; text-align:center; border: 1px solid #d4a017; background:#0a0a0a; color:#d4a017; font-weight:600;">
+            <input type="number" style="width:60px; text-align:center; border: 1px solid #d4a017; background:#0a0a0a; color:#d4a017; font-weight:600;">
             <button type="button" class="btn-qty" onclick="updateBebidaQty('${bebida}', 1)">+</button>
           </div>
         `;
