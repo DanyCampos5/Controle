@@ -86,13 +86,13 @@
         <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis">Total de Pastéis:</label> <input id="ent-pasteis" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
         <div class="flex flex-col gap-3">
-        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis">Total de Pastéis Especiais:</label> <input id="ent-pasteis" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-pasteis-especiais">Total de Pastéis Especiais:</label> <input id="ent-pasteis-especiais" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
        <div class="flex flex-col gap-3">
-        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas (R$4,00):</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas4">Total de Bebidas (R$4,00):</label> <input id="ent-bebidas4" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
        <div class="flex flex-col gap-3">
-        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas">Total de Bebidas (R$7,00):</label> <input id="ent-bebidas" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
+        <label class="text-sm font-medium" style="color:#d4a017;" for="ent-bebidas7">Total de Bebidas (R$7,00):</label> <input id="ent-bebidas7" type="number" placeholder="0" min="0" required> <span class="text-xs" style="color:#555;">Quantidade inicial</span>
        </div>
 
        <div class="sm:col-span-2 flex justify-center mt-6">
@@ -133,13 +133,13 @@
            <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Especiais Vendidos </label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-especiais-total">Pastéis Especiais Vendidos </label> <input id="sai-pasteis-especiais-total" type="number" placeholder="0" min="0" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas (R$4,00) Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas4-total">Bebidas (R$4,00) Vendidas</label> <input id="sai-bebidas4-total" type="number" placeholder="0" min="0" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas-total">Bebidas (R$7,00) Vendidas</label> <input id="sai-bebidas-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas7-total">Bebidas (R$7,00) Vendidas</label> <input id="sai-bebidas7-total" type="number" placeholder="0" min="0" required>
           </div>
          </div>
         </div><!-- SEÇÃO 2: MÉTODOS DE PAGAMENTO -->
@@ -147,16 +147,16 @@
          <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">💳 MÉTODOS DE PAGAMENTO</h2>
          <div class="grid grid-cols-2 gap-2">
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01" placeholder="0.00" min="0">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01" placeholder="0.00" min="0">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01" placeholder="0.00" min="0">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
           </div>
          </div>
         </div><!-- SEÇÃO 3: VALOR TOTAL DO DIA -->
