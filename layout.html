@@ -130,16 +130,16 @@
          <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">📦 TOTAL DE VENDAS</h2>
          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-total">Pastéis Vendidos</label> <input id="sai-pasteis-total" type="number" placeholder="0" min="0" oninput="atualizarDisplays()" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-especiais-total">Pastéis Especiais Vendidos </label> <input id="sai-pasteis-especiais-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pasteis-especiais-total">Pastéis Especiais Vendidos </label> <input id="sai-pasteis-especiais-total" type="number" placeholder="0" min="0" oninput="atualizarDisplays()" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas4-total">Bebidas (R$4,00) Vendidas</label> <input id="sai-bebidas4-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas4-total">Bebidas (R$4,00) Vendidas</label> <input id="sai-bebidas4-total" type="number" placeholder="0" min="0" oninput="atualizarDisplays()" required>
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas7-total">Bebidas (R$7,00) Vendidas</label> <input id="sai-bebidas7-total" type="number" placeholder="0" min="0" required>
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-bebidas7-total">Bebidas (R$7,00) Vendidas</label> <input id="sai-bebidas7-total" type="number" placeholder="0" min="0" oninput="atualizarDisplays()" required>
           </div>
          </div>
         </div><!-- SEÇÃO 2: MÉTODOS DE PAGAMENTO -->
@@ -147,25 +147,38 @@
          <h2 class="text-base sm:text-lg font-semibold mb-4" style="color:#d4a017;">💳 MÉTODOS DE PAGAMENTO</h2>
          <div class="grid grid-cols-2 gap-2">
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-debito">Débito</label> <input id="sai-debito" type="number" step="0.01" placeholder="0.00" min="0" oninput="atualizarDisplays()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-credito">Crédito</label> <input id="sai-credito" type="number" step="0.01" placeholder="0.00" min="0" oninput="atualizarDisplays()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-pix">Pix</label> <input id="sai-pix" type="number" step="0.01" placeholder="0.00" min="0" oninput="atualizarDisplays()">
           </div>
           <div class="flex flex-col gap-1">
-           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01" placeholder="0.00" min="0" oninput="calcularTotal()">
+           <label class="text-xs font-medium" style="color:#d4a017;" for="sai-dinheiro">Dinheiro</label> <input id="sai-dinheiro" type="number" step="0.01" placeholder="0.00" min="0" oninput="atualizarDisplays()">
           </div>
          </div>
         </div><!-- SEÇÃO 3: VALOR TOTAL DO DIA -->
         <div style="background:#0a0a0a; border: 3px solid #d4a017; border-radius:12px; padding:16px; text-align:center;">
-         <p class="text-xs font-medium mb-2" style="color:#888;">VALOR TOTAL</p>
+         <p class="text-xs font-medium mb-2" style="color:#888;">VALOR TOTAL LANÇADO</p>
          <div class="text-3xl sm:text-4xl font-bold" id="sai-total-display" style="color:#d4a017;">
           R$ 0,00
          </div>
-        </div><!-- BOTÃO FINAL --> <button type="submit" class="btn-primary flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold w-full" id="btn-sai-submit"> <i data-lucide="lock" style="width:18px; height:18px;"></i> <span>Finalizar Dia</span> </button>
+         <div>
+            <br>
+            <p class="text-xs font-medium mb-2" style="color:#888;">VALOR VENDIDO</p>
+            <div class="text-3xl sm:text-4xl font-bold" id="sai-total-display-calculado"
+                style="color:#d4a017;">
+                R$ 0,00
+            </div>
+            <br>
+        </div>
+        </div>
+        
+
+        <!-- BOTÃO FINAL --> 
+         <button type="submit" class="btn-primary flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold w-full" id="btn-sai-submit"> <i data-lucide="lock" style="width:18px; height:18px;"></i> <span>Finalizar Dia</span> </button>
        </form>
       </div>
      </div>
@@ -373,6 +386,23 @@
       }, 0);
     }
 
+    function totalCalculado() {
+            const pastel = 11 * parseFloat(document.getElementById('sai-pasteis-total').value) || 0;
+            const pastelEspecial = 22 * parseFloat(document.getElementById('sai-pasteis-especiais-total').value) || 0;
+            const bebidas4 = 4 * parseFloat(document.getElementById('sai-bebidas4-total').value) || 0;
+            const bebidas7 = 7 * parseFloat(document.getElementById('sai-bebidas7-total').value) || 0;
+            const totalCalc = pastel + pastelEspecial + bebidas4 + bebidas7;
+            const displayCalc = document.getElementById('sai-total-display-calculado');
+            if (displayCalc) {
+                displayCalc.textContent = 'R$ ' + totalCalc.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+
+        function atualizarDisplays() {
+            calcularTotal();
+            totalCalculado();
+        }
+
     // Form handlers
     function setupForm(section, prefix) {
       const form = document.getElementById('form-' + section);
@@ -381,12 +411,12 @@
       if (section === 'saida') {
         // Listeners para cálculo de total - adiciona ao carregar
         setTimeout(() => {
-          ['sai-debito', 'sai-credito', 'sai-pix', 'sai-dinheiro'].forEach(id => {
+          ['sai-debito', 'sai-credito', 'sai-pix', 'sai-dinheiro', 'sai-pasteis-total', 'sai-pasteis-especiais-total', 'sai-bebidas4-total', 'sai-bebidas7-total'].forEach(id => {
             const el = document.getElementById(id);
             if (el) {
-              el.addEventListener('input', calcularTotal, true);
-              el.addEventListener('keyup', calcularTotal, true);
-              el.addEventListener('change', calcularTotal, true);
+              el.addEventListener('input', atualizarDisplays, true);
+              el.addEventListener('keyup', atualizarDisplays, true);
+              el.addEventListener('change',atualizarDisplays, true);
             }
           });
         }, 100);
