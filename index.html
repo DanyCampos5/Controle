@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Feira Pro</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="src/estilos.css">
+</head>
+<body class="h-full">
+    <div id="app" class="h-full w-full flex flex-col overflow-auto">
+        <header class="w-full px-6 pt-5 pb-2 flex items-center justify-between flex-shrink-0">
+            <h1 class="text-xl font-bold text-[#d4a017]">Gestão de Feira</h1>
+            <span class="text-xs text-gray-600">v3.0</span>
+        </header>
+
+        <nav id="menu-abas" class="w-full flex border-b flex-shrink-0 px-4 gap-1 overflow-x-auto border-[#222]">
+            </nav>
+
+        <main id="conteudo-principal" class="flex-1 w-full overflow-auto">
+            </main>
+    </div>
+
+    <script src="src/controle/entrada.js"></script>
+    <script src="src/controle/pasteis.js"></script>
+    <script src="src/controle/bebidas.js"></script>
+    <script src="src/controle/saida.js"></script>
+    <script src="src/controle/historico.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>
