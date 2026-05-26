@@ -1,7 +1,7 @@
 const Pasteis = {
     sabores11: ['Carne', 'Queijo', 'Palmito', 'Presunto e Queijo', 'Frango Queijo', 'Carne e Queijo', 'Palmito Queijo', 'Palmito Frango', 'Coxinha Frango', 'Coxinha Carne'],
     especiais22: ['Pastelão', 'Pastelão Frango', 'Enroladão'],
-    
+
     render() {
         let html = '<section class="p-4 max-w-xl mx-auto">';
         html += '<div class="section-title">Pastéis R$ 11</div>' + this.renderLista(this.sabores11);
