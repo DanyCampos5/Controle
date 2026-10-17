@@ -1,0 +1,80 @@
+<svg id="masterSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" class="rounded-[22%] overflow-hidden">
+                        <defs>
+                            <!-- Fundo Escuro Moderno (Azul Marinho) -->
+                            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f172a"></stop>
+                                <stop offset="100%" stop-color="#1e293b"></stop>
+                            </linearGradient>
+
+                            <!-- Gradiente Pastel Dourado -->
+                            <linearGradient id="pastelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fbbf24"></stop>
+                                <stop offset="100%" stop-color="#d97706"></stop>
+                            </linearGradient>
+
+                            <!-- Gradiente Verde Cifrão / Financeiro -->
+                            <linearGradient id="moneyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#34d399"></stop>
+                                <stop offset="100%" stop-color="#059669"></stop>
+                            </linearGradient>
+
+                            <!-- Sombra Suave -->
+                            <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"></feDropShadow>
+                            </filter>
+                            
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+                            </filter>
+                        </defs>
+
+                        <!-- Base do Ícone (Rounded Squircle) -->
+                        <rect width="512" height="512" rx="115" fill="url(#bgGrad)"></rect>
+                        
+                        <!-- Borda sutil de destaque -->
+                        <rect x="2" y="2" width="508" height="508" rx="113" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="4"></rect>
+
+                        <!-- Grupo do Pastel + Símbolos -->
+                        <g filter="url(#dropShadow)">
+                            
+                            <!-- SILHUETA DO PASTEL (Rotacionado para dinamismo) -->
+                            <g transform="translate(256, 256) rotate(-18) translate(-256, -256)">
+                                
+                                <!-- Corpo Principal do Pastel -->
+                                <path d="M 120 180 C 120 150, 150 120, 180 120 L 330 120 C 360 120, 390 150, 390 180 L 390 330 C 390 360, 360 390, 330 390 L 180 390 C 150 390, 120 360, 120 330 Z" fill="url(#pastelGrad)"></path>
+
+                                <!-- Bordas Frisadas (Marcas de Garfo Típicas do Pastel) -->
+                                <!-- Frisos Topo e Direita -->
+                                <path d="M 140 120 L 140 100 M 170 120 L 170 100 M 200 120 L 200 100 M 230 120 L 230 100 M 260 120 L 260 100 M 290 120 L 290 100 M 320 120 L 320 100 M 350 120 L 350 100 M 370 120 L 370 100
+                                         M 390 140 L 410 140 M 390 170 L 410 170 M 390 200 L 410 200 M 390 230 L 410 230 M 390 260 L 410 260 M 390 290 L 410 290 M 390 320 L 410 320 M 390 350 L 410 350 M 390 370 L 410 370" stroke="#b45309" stroke-width="8" stroke-linecap="round" opacity="0.75"></path>
+
+                                <!-- Frisos Esquerda e Base -->
+                                <path d="M 120 140 L 100 140 M 120 170 L 100 170 M 120 200 L 100 200 M 120 230 L 100 230 M 120 260 L 100 260 M 120 290 L 100 290 M 120 320 L 100 320 M 120 350 L 100 350 M 120 370 L 100 370
+                                         M 140 390 L 140 410 M 170 390 L 170 410 M 200 390 L 200 410 M 230 390 L 230 410 M 260 390 L 260 410 M 290 390 L 290 410 M 320 390 L 320 410 M 350 390 L 350 410 M 370 390 L 370 410" stroke="#b45309" stroke-width="8" stroke-linecap="round" opacity="0.75"></path>
+
+                                <!-- Detalhe Interno de Massa Frita / Textura sutil -->
+                                <path d="M 160 160 Q 256 140 352 160 Q 370 256 352 352 Q 256 370 160 352 Q 140 256 160 160 Z" fill="none" stroke="#fef3c7" stroke-width="5" opacity="0.3"></path>
+                            </g>
+
+                            <!-- GRÁFICO DE CRESCIMENTO (FINANÇAS) INTEGRADO -->
+                            <g transform="translate(140, 245)">
+                                <path d="M 0 60 L 50 30 L 100 45 L 170 -15" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"></path>
+                                <path d="M 0 60 L 50 30 L 100 45 L 170 -15" fill="none" stroke="url(#moneyGrad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path>
+                                
+                                <!-- Seta do Gráfico -->
+                                <path d="M 135 -15 L 170 -15 L 170 20" fill="none" stroke="url(#moneyGrad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+
+                            <!-- CIFRÃO R$ / $ EMBLEMÁTICO MINIMALISTA -->
+                            <g transform="translate(256, 260)">
+                                <!-- Círculo de fundo do símbolo financeiro para legibilidade -->
+                                <circle cx="50" cy="50" r="72" fill="#0f172a" opacity="0.85"></circle>
+                                <circle cx="50" cy="50" r="68" fill="none" stroke="url(#moneyGrad)" stroke-width="6" opacity="0.6"></circle>
+                                
+                                <!-- Símbolo S / Cifrão estilizado com alto contraste -->
+                                <text x="50" y="88" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="110" fill="url(#moneyGrad)" text-anchor="middle" filter="url(#glow)">$</text>
+                            </g>
+
+                        </g>
+                    </svg>

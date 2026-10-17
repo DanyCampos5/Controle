@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080808">
+    <title>Gestão de Feira Pro</title>
+    <link rel="icon" type="image/svg+xml" href="/src/images/favicon-pastel-financeiro.svg">
+
+    <!-- Bibliotecas externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos: o nome precisa ser igual ao do seu arquivo. Apague a linha que não usar. -->
+    <link rel="stylesheet" href="src/estilos.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="cabecalho">
+            <div class="cabecalho-marca">
+
+                <div class="cabecalho-logo">
+                    <img src="src/images/favicon-pastel-financeiro.svg" alt="Logo Gestão de Feira">
+                </div>
+
+                <div>
+                    <h1 class="cabecalho-titulo">Gestão de Feira</h1>
+                    <span class="cabecalho-versao">v3.2</span>
+                </div>
+            </div>
+            <div id="cabecalho-data" class="cabecalho-data"></div>
+        </header>
+
+        <nav id="menu-abas"></nav>
+
+        <main id="conteudo-principal"></main>
+    </div>
+
+    <!-- A ORDEM IMPORTA: cada arquivo só pode usar o que foi carregado antes dele -->
+    <script src="src/configuracao.js"></script> <!-- preços, produtos, chaves do localStorage -->
+    <script src="src/migracao.js"></script> <!-- converte dados antigos (pode ser apagado no futuro) -->
+    <script src="src/avisos.js"></script> <!-- mensagens e confirmações (SweetAlert) -->
+    <script src="src/componentes.js"></script> <!-- pedaços de tela reutilizáveis -->
+
+    <script src="src/controle/entrada.js"></script>
+    <script src="src/controle/pasteis.js"></script>
+    <script src="src/controle/bebidas.js"></script>
+    <script src="src/controle/saida.js"></script>
+    <script src="src/controle/historico.js"></script>
+
+    <script src="src/app.js"></script> <!-- sempre por último: inicia o sistema -->
+</body>
+
+</html>
